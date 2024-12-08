@@ -50,6 +50,9 @@ async def save_processed_agent_data(processed_agent_data: ProcessedAgentData):
         store_adapter.save_data(processed_agent_data_batch=processed_agent_data_batch)
     return {"status": "ok"}
 
+@app.get("/health")
+async def healthcheck():
+    return {"status": "ok"}
 
 # MQTT
 client = mqtt.Client()

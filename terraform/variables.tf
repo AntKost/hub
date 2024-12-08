@@ -7,13 +7,13 @@ variable "aws_region" {
 variable "hub_image" {
   description = "Docker image for the Hub service"
   type        = string
-  default     = "docker-image:latest"
+  default     = "hub:latest"
 }
 
 variable "hub_cpu" {
   description = "CPU units for the Hub task"
   type        = string
-  default     = "256"
+  default     = "512"
 }
 
 variable "hub_memory" {
@@ -36,6 +36,12 @@ variable "service_name" {
 
 variable "container_port" {
   description = "Port on which the Hub container listens"
+  type        = number
+  default     = 8000
+}
+
+variable "host_port" {
+  description = "Port on which the Hub host listens"
   type        = number
   default     = 8000
 }
