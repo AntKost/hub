@@ -9,7 +9,6 @@ from app.adapters.store_api_adapter import StoreApiAdapter
 from app.entities.processed_agent_data import ProcessedAgentData
 from config import (
     STORE_API_BASE_URL,
-    STORE_API_PORT,
     REDIS_HOST,
     REDIS_PORT,
     BATCH_SIZE,
@@ -30,7 +29,7 @@ logging.basicConfig(
 # Create an instance of the Redis using the configuration
 redis_client = Redis(host=REDIS_HOST, port=REDIS_PORT)
 # Create an instance of the StoreApiAdapter using the configuration
-store_adapter = StoreApiAdapter(api_base_url=STORE_API_BASE_URL, api_port=STORE_API_PORT)
+store_adapter = StoreApiAdapter(api_base_url=STORE_API_BASE_URL)
 # Create an instance of the AgentMQTTAdapter using the configuration
 
 # FastAPI
