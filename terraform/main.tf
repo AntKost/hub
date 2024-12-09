@@ -361,4 +361,6 @@ resource "aws_ecs_service" "hub" {
   lifecycle {
     ignore_changes = [task_definition, load_balancer]
   }
+  
+  depends_on [aws_lb_target_group.hub_tg_blue.arn]
 }
