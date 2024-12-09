@@ -10,8 +10,9 @@ from app.interfaces.store_gateway import StoreGateway
 
 
 class StoreApiAdapter(StoreGateway):
-    def __init__(self, api_base_url):
+    def __init__(self, api_base_url, api_port):
         self.api_base_url = api_base_url
+        self.api_port = api_port
 
     def save_data(self, processed_agent_data_batch: List[ProcessedAgentData]):
         """
@@ -22,7 +23,7 @@ class StoreApiAdapter(StoreGateway):
             bool: True if the data is successfully saved, False otherwise.
         """
         # Make a POST request to the Store API endpoint with the processed data
-        endpoint_url = f"{self.api_base_url}/processed_agent_data/"
+        endpoint_url = f"{self.api_base_url}:{self.api_port}/processed_agent_data/"
         try:
             response = requests.post(
                 endpoint_url, data=json.dumps(processed_agent_data_batch, default=pydantic_core.to_jsonable_python)

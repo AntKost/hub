@@ -9,6 +9,7 @@ from app.adapters.store_api_adapter import StoreApiAdapter
 from app.entities.processed_agent_data import ProcessedAgentData
 from config import (
     STORE_API_BASE_URL,
+    STORE_API_PORT,
     REDIS_HOST,
     REDIS_PORT,
     BATCH_SIZE,
@@ -19,7 +20,7 @@ from config import (
 
 # Configure logging settings
 logging.basicConfig(
-    level=logging.INFO,  # Set the log level to INFO (you can use logging.DEBUG for more detailed logs)
+    level=logging.DEBUG,  # Set the log level to INFO (you can use logging.DEBUG for more detailed logs)
     format="[%(asctime)s] [%(levelname)s] [%(module)s] %(message)s",
     handlers=[
         logging.StreamHandler(),  # Output log messages to the console
@@ -29,7 +30,7 @@ logging.basicConfig(
 # Create an instance of the Redis using the configuration
 redis_client = Redis(host=REDIS_HOST, port=REDIS_PORT)
 # Create an instance of the StoreApiAdapter using the configuration
-store_adapter = StoreApiAdapter(api_base_url=STORE_API_BASE_URL)
+store_adapter = StoreApiAdapter(api_base_url=STORE_API_BASE_URL, api_port=STORE_API_PORT)
 # Create an instance of the AgentMQTTAdapter using the configuration
 
 # FastAPI
