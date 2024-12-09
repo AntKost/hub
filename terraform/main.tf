@@ -362,5 +362,5 @@ resource "aws_ecs_service" "hub" {
     ignore_changes = [task_definition, load_balancer]
   }
   
-  depends_on = [aws_lb_target_group.hub_tg_blue]
+  depends_on = [aws_lb_listener.hub_listener]
 }
