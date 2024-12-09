@@ -214,6 +214,11 @@ resource "aws_ecs_task_definition" "hub" {
       containerPort = var.container_port
       hostPort      = var.host_port
       protocol      = "tcp"
+    },
+    {
+      containerPort = 1883
+      hostPort      = 1883
+      protocol      = "tcp"
     }]
     healthCheck = {
       command     = ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
