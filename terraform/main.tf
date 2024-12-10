@@ -225,7 +225,7 @@ resource "aws_ecs_task_definition" "hub" {
       interval    = 30
       timeout     = 10
       retries     = 5
-      startPeriod = 15
+      startPeriod = 20
     }
     logConfiguration = {
         logDriver = "awslogs"
@@ -351,12 +351,6 @@ resource "aws_ecs_service" "hub" {
 
   service_registries {
     registry_arn = aws_service_discovery_service.hub.arn
-  }
-
-  load_balancer {
-    target_group_arn = aws_lb_target_group.hub_tg_blue.arn
-    container_name   = "hub"
-    container_port   = var.container_port
   }
 
   deployment_controller {
