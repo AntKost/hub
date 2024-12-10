@@ -225,7 +225,7 @@ resource "aws_ecs_task_definition" "hub" {
       interval    = 30
       timeout     = 10
       retries     = 5
-      startPeriod = 20
+      startPeriod = 15
     }
     logConfiguration = {
         logDriver = "awslogs"
