@@ -353,6 +353,12 @@ resource "aws_ecs_service" "hub" {
     registry_arn = aws_service_discovery_service.hub.arn
   }
 
+  load_balancer {
+    target_group_arn = aws_lb_target_group.hub_tg_blue.arn
+    container_name   = "hub"
+    container_port   = var.container_port
+  }
+
   deployment_controller {
     type = "CODE_DEPLOY"
   }
